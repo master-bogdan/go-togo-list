@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"go-todo-list/src/config"
 	"log"
-	"os"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 )
 
 type Todo struct {
@@ -18,13 +17,7 @@ type Todo struct {
 func main() {
 	var app = fiber.New()
 
-	var err = godotenv.Load("../.env")
-
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
-	var PORT = os.Getenv("PORT")
+	var PORT = config.LoadConfig().PORT
 
 	var todos = []Todo{}
 
