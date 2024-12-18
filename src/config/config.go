@@ -8,7 +8,8 @@ import (
 )
 
 type Config struct {
-	PORT string
+	PORT        string
+	MONGODB_URI string
 }
 
 func LoadConfig() *Config {
@@ -19,6 +20,7 @@ func LoadConfig() *Config {
 	}
 
 	return &Config{
-		PORT: os.Getenv("PORT"),
+		PORT:        os.Getenv("PORT"),
+		MONGODB_URI: os.Getenv("MONGODB_URI"),
 	}
 }
